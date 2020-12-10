@@ -1,6 +1,7 @@
 package com.clearminds.arm.servicios;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -44,6 +45,31 @@ public class RestEstudiantes {
 		}
 	}
 	
+	@Path("/eliminar")
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void eliminar(Estudiante estu){
+		ServicioEstudiante srv = new ServicioEstudiante();
+		try {
+			srv.eliminarEstudiante(estu);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Path("/listar")
+	@GET
+	public void listar(){
+		ServicioEstudiante srv = new ServicioEstudiante();
+		try {
+			srv.leerEstudiante();
+		} catch (BDDException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 
